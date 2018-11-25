@@ -1,6 +1,6 @@
 # adidas ASCII logo: JavaScript
 
-Implementation to resolve the [adidas ASCII logo challenge][adidas-ascii-logo] with JavaScript ES6+.
+Implementation to resolve the [adidas ASCII logo challenge][adidas-ascii-logo] with JavaScript ES6+ by Juan Manuel Bécares Silva.
 
 ## Requirements and dependencies
 
