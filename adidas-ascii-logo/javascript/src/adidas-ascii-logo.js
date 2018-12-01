@@ -38,46 +38,57 @@ module.exports = function (width) {
   //  @@ @@  -->> [espacioWidth][stringArrobas][espacioMini][stringArrobas]\n  
   //@@ @@ @@ -->> [stringArrobas][espacioMini][stringArrobas][espacioMini][stringArrobas]\n   
 
+  const stringArrobasConEspacioMini = stringArrobas + espacioMini;
+
   // Result
   var resultado = "";
-
-  // index of loops, shared to get only one address to use (calloc)
-  // índice de bucles, compartido para reservar solo una dirección de memoria entre
-  var i;
-
-  // Primer bloque (superior): Solo la linea final a la derecha
-  // Firtst part (up): only the stripe on the right
-  for (i = 0; i < miniSpacio; i++) {
-    resultado += espacio.repeat(i)
-      + espacioWidth
-      + espacioWidth
-      + stringArrobas
-      + "\n";
+  
+  // Actualización Diciembre, se comprimen los 3 bucles en uno solo con 2 condicionales dentro.
+  for (let i = 0; i < (miniSpacio * 3); i++) {
+    resultado += espacio.repeat(i % miniSpacio)
+    + (((i / miniSpacio) < 2) ? espacioWidth : stringArrobasConEspacioMini)
+    + (((i / miniSpacio) < 1) ? espacioWidth : stringArrobasConEspacioMini)
+    + stringArrobas
+    + "\n";
   }
 
-  // Segundo bloque: Las dos líneas de la derecha
-  // Second part: the two stripes on the right
-  for (i = 0; i < miniSpacio; i++) {
-    resultado += espacio.repeat(i)
-      + espacioWidth
-      + stringArrobas
-      + espacioMini
-      + stringArrobas
-      + "\n";
-  }
+  // // index of loops, shared to get only one address to use (calloc)
+  // // índice de bucles, compartido para reservar solo una dirección de memoria entre
+  // var i;
+
+  // // Primer bloque (superior): Solo la linea final a la derecha
+  // // Firtst part (up): only the stripe on the right
+  // for (i = 0; i < miniSpacio; i++) {
+  //   resultado += espacio.repeat(i)
+  //     + espacioWidth
+  //     + espacioWidth
+  //     + stringArrobas
+  //     + "\n";
+  // }
+
+  // // Segundo bloque: Las dos líneas de la derecha
+  // // Second part: the two stripes on the right
+  // for (i = 0; i < miniSpacio; i++) {
+  //   resultado += espacio.repeat(i)
+  //     + espacioWidth
+  //     + stringArrobas
+  //     + espacioMini
+  //     + stringArrobas
+  //     + "\n";
+  // }
 
 
-  // Tercer bloque (abajo): Las tres líneas
-  // Last part (bottom): the three stripes
-  for (i = 0; i < miniSpacio; i++) {
-    resultado += espacio.repeat(i)
-      + stringArrobas
-      + espacioMini
-      + stringArrobas
-      + espacioMini
-      + stringArrobas
-      + "\n"; // this will be a problem, esto será un problema
-  }
+  // // Tercer bloque (abajo): Las tres líneas
+  // // Last part (bottom): the three stripes
+  // for (i = 0; i < miniSpacio; i++) {
+  //   resultado += espacio.repeat(i)
+  //     + stringArrobas
+  //     + espacioMini
+  //     + stringArrobas
+  //     + espacioMini
+  //     + stringArrobas
+  //     + "\n"; // this will be a problem, esto será un problema
+  // }
 
   // Eliminamos el último salto de línea añadido en el último bucle.
   // Remove the last \n added on the last loop
